@@ -69,7 +69,7 @@ Add these lines:
 
 ```
 Defaults env_keep += "DYLD_LIBRARY_PATH"
-miguel ALL=(ALL) NOPASSWD: /usr/local/bin/python3
+$USER ALL=(ALL) NOPASSWD: /usr/local/bin/python3
 ```
 
 ### 3. Set up AllMyBatteries
@@ -94,15 +94,15 @@ Edit `run_k380.sh` and `k380.py` to match your Python path if needed.
 ### 5. Set up launchd automation
 
 ```bash
-cp launchd/com.miguel.k380battery.plist ~/Library/LaunchAgents/
-launchctl load ~/Library/LaunchAgents/com.miguel.k380battery.plist
+cp launchd/com.k380battery.monitor.plist ~/Library/LaunchAgents/
+launchctl load ~/Library/LaunchAgents/com.k380battery.monitor.plist
 ```
 
 Verify it's running:
 
 ```bash
 launchctl list | grep k380
-# Should show: [PID]  0  com.miguel.k380battery
+# Should show: [PID]  0  com.k380battery.monitor
 ```
 
 ---
@@ -137,7 +137,7 @@ k380-battery-macos/
 ├── k380.py                              # Main script
 ├── run_k380.sh                          # Shell wrapper (sudo + user)
 └── launchd/
-    └── com.miguel.k380battery.plist     # launchd automation config
+    └── com.k380battery.monitor.plist     # launchd automation config
 ```
 
 ---
